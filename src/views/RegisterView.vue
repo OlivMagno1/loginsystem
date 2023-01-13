@@ -17,10 +17,10 @@ const Register = async () => {
     return alert("As senhas digitadas são diferentes");
   }
 
-  const res = await fetch("http://localhost:3434/register", {
+  const res = await fetch("http://localhost:3000/register", {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: email.value,

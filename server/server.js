@@ -13,12 +13,12 @@ const client = new Client({
   env: envs.test
 })
 
-const port = process.env.PORT || 3434;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-app.post("./register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { email, password } = req.body;
   try {
     const resp = await client.passwords.create({
@@ -43,7 +43,7 @@ app.post("./register", async (req, res) => {
   }
 })
 
-app.post('./login', async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const resp = await client.passwords.authenticate({
@@ -68,7 +68,7 @@ app.post('./login', async (req, res) => {
   }
 })
 
-app.post('./authenticate', async (req, res) => {
+app.post("/authenticate", async (req, res) => {
   const { session_token } = req.body;
   try {
     await client.sessions.authenticate({ session_token })
@@ -88,7 +88,7 @@ app.post('./authenticate', async (req, res) => {
   }
 })
 
-app.post('./logout', async (req, res) => {
+app.post("/logout", async (req, res) => {
   const { session_token } = req.body;
   try {
     await client.sessions.revoke({ session_token })
