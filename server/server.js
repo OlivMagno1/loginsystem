@@ -18,7 +18,7 @@ const port = process.env.PORT || 3434;
 app.use(cors());
 app.use(express.json());
 
-app.post('./register', async (req, res) => {
+app.post("./register", async (req, res) => {
   const { email, password } = req.body;
   try {
     const resp = await client.passwords.create({

@@ -1,9 +1,40 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
 const conf_password = ref("");
+
+const Register = async () => {
+  if (!email.value || !password.value || !conf_password.value) {
+    return alert("Preencha todos os campos antes de continuar");
+  }
+
+  if (password.value !== conf_password.value) {
+    return alert("As senhas digitadas são diferentes");
+  }
+
+  const res = await fetch("http://localhost:3434/register", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  }).then((res) => res.json());
+
+  if (res.success) {
+    localStorage.setItem("token", res.token);
+    router.push("/");
+  } else {
+    alert(res.message);
+  }
+};
 </script>
 
 <template>
@@ -14,7 +45,7 @@ const conf_password = ref("");
       <p>Escolha um e-mail e uma senha para continuar</p>
     </header>
 
-    <form @submit.prevent="">
+    <form @submit.prevent="Register">
       <label>
         <span>Informe o seu e-mail</span>
         <input type="email" v-model="email" placeholder="test@test.com" />
