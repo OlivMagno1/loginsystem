@@ -1,7 +1,8 @@
 <template>
-  <div class="home">
-    <h1>This is the home page</h1>
-  </div>
+  <main>
+    <h1>Página Principal</h1>
+    <button>Sair</button>
+  </main>
 </template>
 
 <script>
@@ -9,3 +10,13 @@ export default {
   name: "HomeView",
 };
 </script>
+
+<style scoped>
+main {
+  padding: 1.5rem;
+}
+
+button {
+  margin-bottom: 1rem;
+}
+</style>
