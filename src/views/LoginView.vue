@@ -1,8 +1,35 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+
+const Login = async () => {
+  if (!email.value || !password.value) {
+    return alert("Preencha todos os campos antes de continuar");
+  }
+
+  const res = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  }).then((res) => res.json());
+
+  if (res.success) {
+    localStorage.setItem("token", res.token);
+    router.push("/");
+  } else {
+    alert(res.message);
+  }
+};
 </script>
 
 <template>
@@ -13,7 +40,7 @@ const password = ref("");
       <p>Entre com seu usuário ou cadastre uma conta nova para continuar</p>
     </header>
 
-    <form @submit.prevent="">
+    <form @submit.prevent="Login">
       <label>
         <span>Informe o seu e-mail</span>
         <input type="email" v-model="email" placeholder="test@test.com" />
