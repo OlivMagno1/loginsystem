@@ -5,24 +5,43 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+:root {
+  --primary: #e11d48;
+  --primary-dark: #c32345;
+  --gray: #9ca3af;
+  --light: #f3f4f6;
+  --dark: #111827;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+a {
+  color: var(--primary);
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+input {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.logo {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  padding: 0.5rem;
+  padding-right: calc(0.5rem - 5px);
+  border: 2px solid #fff;
+  color: #fff;
+  margin-bottom: 1.5rem;
 }
 </style>
