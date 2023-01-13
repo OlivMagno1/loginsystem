@@ -46,20 +46,26 @@ const conf_password = ref("");
 main {
   display: flex;
   flex-flow: column nowrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
   background-color: var(--primary);
   color: #fff;
 }
 
 header {
   padding: 1.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  width: 35rem;
 }
 
 footer {
   background-color: #fff;
-  width: 100vw;
+  width: 35rem;
   color: var(--dark);
   text-align: center;
   padding: 1.5rem;
@@ -84,7 +90,7 @@ form {
   box-shadow: 0px -4px 12px 4px rgba(0, 0, 0, 0.16);
   color: var(--dark);
   padding: 4rem 1.5rem;
-  width: 100vw;
+  width: 35rem;
 }
 
 label {
