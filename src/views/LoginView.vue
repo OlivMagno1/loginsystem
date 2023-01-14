@@ -6,6 +6,7 @@ const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+const alert_message = ref("");
 const check_allfields = ref(true);
 
 const Login = async () => {
@@ -33,7 +34,7 @@ const Login = async () => {
     localStorage.setItem("token", res.token);
     router.push("/");
   } else {
-    alert(res.message);
+    alert_message.value = res.message;
   }
 };
 </script>
@@ -58,6 +59,9 @@ const Login = async () => {
         <span>Informe a sua senha</span>
         <input type="password" v-model="password" placeholder="••••••••" />
       </label>
+      <span class="alert">
+        {{ alert_message }}
+      </span>
       <input type="submit" value="Entrar" />
     </form>
     <footer>
