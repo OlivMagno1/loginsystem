@@ -6,8 +6,9 @@
 
 <style>
 :root {
-  --primary: #e11d48;
-  --primary-dark: #c32345;
+  --primary: #0f636b;
+  --primary-dark: #093a3e;
+  --alert: #bf160d;
   --gray: #9ca3af;
   --light: #f3f4f6;
   --dark: #111827;

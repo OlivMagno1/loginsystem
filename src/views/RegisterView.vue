@@ -164,7 +164,7 @@ label span {
 }
 
 .alert {
-  color: var(--primary);
+  color: var(--alert);
 }
 
 input:not([type="submit"]) {
