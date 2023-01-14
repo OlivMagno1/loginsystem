@@ -7,14 +7,22 @@ const router = useRouter();
 const email = ref("");
 const password = ref("");
 const conf_password = ref("");
+const check_password = ref(true);
+const check_allfields = ref(true);
 
 const Register = async () => {
   if (!email.value || !password.value || !conf_password.value) {
-    return alert("Preencha todos os campos antes de continuar");
+    check_allfields.value = false;
+    return;
+  }
+
+  if (email.value && password.value && conf_password.value) {
+    check_allfields.value = true;
   }
 
   if (password.value !== conf_password.value) {
-    return alert("As senhas digitadas são diferentes");
+    check_password.value = false;
+    return;
   }
 
   const res = await fetch("http://localhost:3000/register", {
@@ -47,20 +55,27 @@ const Register = async () => {
 
     <form @submit.prevent="Register">
       <label>
-        <span>Informe o seu e-mail</span>
+        <span class="alert" v-if="check_allfields == false">
+          Preencha todos os campos antes de continuar!
+        </span>
+        <span>Informe o seu e-mail:</span>
         <input type="email" v-model="email" placeholder="test@test.com" />
       </label>
       <label>
-        <span>Informe a sua senha</span>
+        <span>Informe a sua senha:</span>
         <input type="password" v-model="password" placeholder="************" />
+        <password-meter :password="password" />
       </label>
       <label>
-        <span>Confirme a senha digitada</span>
+        <span>Confirme a senha digitada:</span>
         <input
           type="password"
           v-model="conf_password"
           placeholder="************"
         />
+        <span class="alert" v-if="check_password == false">
+          As senhas digitadas não são iguais!
+        </span>
       </label>
       <input type="submit" value="Cadastrar-se" />
     </form>
@@ -72,6 +87,17 @@ const Register = async () => {
     </footer>
   </main>
 </template>
+
+<script>
+import { defineComponent } from "vue";
+import PasswordMeter from "vue-simple-password-meter";
+
+export default defineComponent({
+  components: {
+    PasswordMeter,
+  },
+});
+</script>
 
 <style scoped>
 main {
@@ -135,6 +161,10 @@ label span {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+}
+
+.alert {
+  color: var(--primary);
 }
 
 input:not([type="submit"]) {
