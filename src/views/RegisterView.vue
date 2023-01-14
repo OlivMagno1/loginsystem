@@ -63,16 +63,12 @@ const Register = async () => {
       </label>
       <label>
         <span>Informe a sua senha:</span>
-        <input type="password" v-model="password" placeholder="************" />
+        <input type="password" v-model="password" placeholder="••••••••" />
         <password-meter :password="password" />
       </label>
       <label>
         <span>Confirme a senha digitada:</span>
-        <input
-          type="password"
-          v-model="conf_password"
-          placeholder="************"
-        />
+        <input type="password" v-model="conf_password" placeholder="••••••••" />
         <span class="alert" v-if="check_password == false">
           As senhas digitadas não são iguais!
         </span>

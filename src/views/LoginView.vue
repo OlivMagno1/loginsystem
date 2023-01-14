@@ -56,7 +56,7 @@ const Login = async () => {
       </label>
       <label>
         <span>Informe a sua senha</span>
-        <input type="password" v-model="password" placeholder="************" />
+        <input type="password" v-model="password" placeholder="••••••••" />
       </label>
       <input type="submit" value="Entrar" />
     </form>
