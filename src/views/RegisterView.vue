@@ -59,7 +59,7 @@ const Register = async () => {
           Preencha todos os campos antes de continuar!
         </span>
         <span>Informe o seu e-mail:</span>
-        <input type="email" v-model="email" placeholder="test@test.com" />
+        <input type="email" v-model="email" placeholder="seu@email.com" />
       </label>
       <label>
         <span>Informe a sua senha:</span>
