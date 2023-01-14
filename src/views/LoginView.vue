@@ -6,10 +6,16 @@ const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+const check_allfields = ref(true);
 
 const Login = async () => {
   if (!email.value || !password.value) {
-    return alert("Preencha todos os campos antes de continuar");
+    check_allfields.value = false;
+    return;
+  }
+
+  if (email.value && password.value) {
+    check_allfields.value = true;
   }
 
   const res = await fetch("http://localhost:3000/login", {
@@ -42,6 +48,9 @@ const Login = async () => {
 
     <form @submit.prevent="Login">
       <label>
+        <span class="alert" v-if="check_allfields == false">
+          Preencha todos os campos antes de continuar!
+        </span>
         <span>Informe o seu e-mail</span>
         <input type="email" v-model="email" placeholder="test@test.com" />
       </label>
@@ -122,6 +131,10 @@ label span {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+}
+
+.alert {
+  color: var(--primary);
 }
 
 input:not([type="submit"]) {
