@@ -44,5 +44,6 @@ input {
   border: 2px solid #fff;
   color: #fff;
   margin-bottom: 1.5rem;
+  cursor: default;
 }
 </style>
