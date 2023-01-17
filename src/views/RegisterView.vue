@@ -158,6 +158,7 @@ label span {
 
 .alert {
   color: var(--alert);
+  transition: 0.82s;
 }
 
 input:not([type="submit"]) {
