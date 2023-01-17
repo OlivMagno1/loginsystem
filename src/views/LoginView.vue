@@ -117,7 +117,7 @@ form {
   background-color: #fff;
   box-shadow: 0px -4px 12px 4px rgba(0, 0, 0, 0.16);
   color: var(--dark);
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   width: 35rem;
 }
 

@@ -7,21 +7,19 @@ const router = useRouter();
 const email = ref("");
 const password = ref("");
 const conf_password = ref("");
-const check_password = ref(true);
-const check_allfields = ref(true);
+const alert_message = ref("");
+const check_alert = ref(false);
 
 const Register = async () => {
   if (!email.value || !password.value || !conf_password.value) {
-    check_allfields.value = false;
+    check_alert.value = true;
+    alert_message.value = "Preencha todos os campos antes de continuar!";
     return;
   }
 
-  if (email.value && password.value && conf_password.value) {
-    check_allfields.value = true;
-  }
-
   if (password.value !== conf_password.value) {
-    check_password.value = false;
+    check_alert.value = true;
+    alert_message.value = "As senhas digitadas não coincidem!";
     return;
   }
 
@@ -40,7 +38,8 @@ const Register = async () => {
     localStorage.setItem("token", res.token);
     router.push("/");
   } else {
-    alert(res.message);
+    check_alert.value = true;
+    alert_message.value = res.message;
   }
 };
 </script>
@@ -55,9 +54,6 @@ const Register = async () => {
 
     <form @submit.prevent="Register">
       <label>
-        <span class="alert" v-if="check_allfields == false">
-          Preencha todos os campos antes de continuar!
-        </span>
         <span>Informe o seu e-mail:</span>
         <input type="email" v-model="email" placeholder="seu@email.com" />
       </label>
@@ -69,11 +65,11 @@ const Register = async () => {
       <label>
         <span>Confirme a senha digitada:</span>
         <input type="password" v-model="conf_password" placeholder="••••••••" />
-        <span class="alert" v-if="check_password == false">
-          As senhas digitadas não são iguais!
+        <span class="alert" :class="{ shakeStill: check_alert }">
+          {{ alert_message }}
         </span>
       </label>
-      <input type="submit" value="Cadastrar-se" />
+      <input type="submit" value="Cadastrar-se" @click="check_alert = false" />
     </form>
     <footer>
       <p>
@@ -142,13 +138,14 @@ form {
   background-color: #fff;
   box-shadow: 0px -4px 12px 4px rgba(0, 0, 0, 0.16);
   color: var(--dark);
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   width: 35rem;
 }
 
 label {
   display: block;
   margin-bottom: 1.5rem;
+  height: 7rem;
 }
 
 label span {
@@ -156,7 +153,7 @@ label span {
   color: var(--gray);
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .alert {
@@ -195,5 +192,42 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: var(--primary-dark);
+}
+
+.shakeIn-enter-active,
+.shakeStill {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+.shakeIn-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.shakeIn-leave-to {
+  opacity: 0;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 </style>
