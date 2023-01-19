@@ -16,16 +16,19 @@ const Login = async () => {
     return;
   }
 
-  const res = await fetch("https://admirable-baklava-67109e.netlify.app/.netlify/functions/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: email.value,
-      password: password.value,
-    }),
-  }).then((res) => res.json());
+  const res = await fetch(
+    "https://admirable-baklava-67109e.netlify.app/.netlify/functions/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+      }),
+    }
+  ).then((res) => res.json());
 
   if (res.success) {
     localStorage.setItem("token", res.token);
