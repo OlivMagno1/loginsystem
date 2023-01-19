@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const Logout = async () => {
-  const res = await fetch("http://localhost:3000/logout", {
+  const res = await fetch("http://localhost:8888/.netlify/functions/logout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
