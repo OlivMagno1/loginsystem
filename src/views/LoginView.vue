@@ -16,7 +16,7 @@ const Login = async () => {
     return;
   }
 
-  const res = await fetch("http://localhost:8888/.netlify/functions/login", {
+  const res = await fetch("https://admirable-baklava-67109e.netlify.app/.netlify/functions/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

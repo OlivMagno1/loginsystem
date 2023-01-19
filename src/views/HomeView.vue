@@ -3,15 +3,18 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const Logout = async () => {
-  const res = await fetch("http://localhost:8888/.netlify/functions/logout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      session_token: localStorage.getItem("token"),
-    }),
-  }).then((res) => res.json());
+  const res = await fetch(
+    "https://admirable-baklava-67109e.netlify.app/.netlify/functions/logout",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        session_token: localStorage.getItem("token"),
+      }),
+    }
+  ).then((res) => res.json());
 
   if (res.success) {
     localStorage.removeItem("token");
