@@ -23,7 +23,7 @@ const Register = async () => {
     return;
   }
 
-  const res = await fetch("http://localhost:3000/register", {
+  const res = await fetch("http://localhost:8888/.netlify/functions/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
