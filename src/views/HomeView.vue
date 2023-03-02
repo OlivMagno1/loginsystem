@@ -43,45 +43,6 @@ const Logout = async () => {
 </template>
 
 <style scoped>
-main {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--primary);
-  color: #fff;
-}
-
-header {
-  padding: 1.5rem;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  justify-content: center;
-  width: 35rem;
-}
-
-footer {
-  background-color: #fff;
-  width: 35rem;
-  color: var(--dark);
-  text-align: center;
-  padding: 1.5rem;
-  padding-bottom: 3rem;
-}
-
-h2 {
-  font-size: 2.125rem;
-  margin-bottom: 1rem;
-}
-
-h2 ~ p {
-  font-weight: 500;
-  font-size: 1rem;
-}
-
 .pageBody {
   flex: 1 1 0%;
   display: block;
@@ -105,13 +66,12 @@ button {
   display: block;
   width: fit-content;
   margin: 0 auto;
-  font-size: 1.5rem;
+  font-size: clamp(0.75rem, 0.5rem + 0.8vw, 1.5rem);
   font-weight: 700;
   color: #fff;
   background-color: var(--primary);
-  padding: 1rem;
-  border: 0;
-  border-radius: 0.5rem;
+  padding: clamp(0.5rem, 0.333rem + 0.6vw, 1rem);
+  border-radius: clamp(0.3rem, 0.233rem + 0.2vw, 0.5rem);
   cursor: pointer;
   transition: 0.2s ease;
 }
