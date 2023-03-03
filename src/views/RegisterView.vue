@@ -60,26 +60,20 @@ const Register = async () => {
         <span>Informe o seu e-mail:</span>
         <input type="email" v-model="email" placeholder="seu@email.com" />
       </label>
-      <div class="twin-label">
-        <label>
-          <span>Informe a sua senha:</span>
-          <input type="password" v-model="password" placeholder="••••••••" />
-          <password-meter :password="password" />
-        </label>
-        <label>
-          <span>Confirme a senha digitada:</span>
-          <input
-            type="password"
-            v-model="conf_password"
-            placeholder="••••••••"
-          />
-        </label>
+      <label>
+        <span>Informe a sua senha:</span>
+        <input type="password" v-model="password" placeholder="••••••••" />
+        <password-meter :password="password" />
+      </label>
+      <label>
+        <span>Confirme a senha digitada:</span>
+        <input type="password" v-model="conf_password" placeholder="••••••••" />
         <Transition name="shakeIn">
           <span class="alert" :class="{ shakeStill: check_alert }">
             {{ alert_message }}
           </span>
         </Transition>
-      </div>
+      </label>
       <input type="submit" value="Cadastrar-se" @click="check_alert = false" />
     </form>
     <footer>
