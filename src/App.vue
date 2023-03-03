@@ -4,6 +4,18 @@
   </div>
 </template>
 
+<script>
+//vh fix
+const documentHeight = () => {
+  const doc = document.documentElement;
+  var vh = window.innerHeight * 0.01;
+  doc.style.setProperty("--doc-vh", `${vh}px`);
+};
+window.addEventListener("resize", documentHeight);
+documentHeight();
+//End vh fix
+</script>
+
 <style>
 :root {
   --primary: #0f636b;
@@ -12,6 +24,7 @@
   --gray: #9ca3af;
   --light: #f3f4f6;
   --dark: #111827;
+  --doc-vh: 0;
 }
 
 * {
@@ -40,7 +53,7 @@ input {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(var(--doc-vh) * 100);
     width: clamp(20rem, 100vw, 48rem);
     background-color: var(--primary);
     color: #fff;
@@ -52,12 +65,12 @@ input {
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-content: center;
-    width: 15rem;
+    width: clamp(18rem, -0.571rem + 92.9vw, 44rem);
   }
 
   footer {
     background-color: #fff;
-    width: 15rem;
+    width: clamp(18rem, -0.571rem + 92.9vw, 44rem);
     color: var(--dark);
     text-align: center;
     padding: clamp(0.5rem, 0.167rem + 1.1vw, 1.5rem);
@@ -98,37 +111,38 @@ input {
     box-shadow: 0px -4px 12px 4px rgba(0, 0, 0, 0.16);
     color: var(--dark);
     padding: clamp(0.5rem, 1.7vw, 2rem) clamp(0.75rem, 0.5rem + 0.8vw, 1.5rem);
-    width: 15rem;
+    width: clamp(18rem, -0.571rem + 92.9vw, 44rem);
   }
 
   label {
     display: block;
-    margin-bottom: clamp(0.6rem, 0.467rem + 0.4vw, 1rem);
-    height: clamp(3rem, 2.333rem + 2.2vw, 5rem);
+    margin-bottom: clamp(1.5rem, 1.278rem + 1.1vw, 2.5rem);
+    height: clamp(4rem, 3.556rem + 2.2vw, 6rem);
   }
 
   label span {
     display: block;
     color: var(--gray);
-    font-size: clamp(0.6rem, 0.467rem + 0.4vw, 1rem);
+    font-size: clamp(1rem, 0.778rem + 1.1vw, 2rem);
     font-weight: 500;
   }
 
   .alert {
     color: var(--alert);
-    font-size: clamp(0.6rem, 0.467rem + 0.4vw, 1rem);
+    font-size: clamp(0.6rem, 0.511rem + 0.4vw, 1rem);
     transition: 0.82s;
+    margin-top: clamp(0.5rem, 0.389rem + 0.6vw, 1rem);
   }
 
   input:not([type="submit"]) {
     display: block;
     width: 100%;
-    border-radius: clamp(0.3rem, 0.233rem + 0.2vw, 0.5rem);
-    padding: clamp(0.5rem, 0.167rem + 1.1vw, 1.5rem) clamp(0.25rem, 0.8vw, 1rem);
-    font-size: clamp(0.6rem, 0.467rem + 0.4vw, 1rem);
+    border-radius: clamp(0.5rem, 0.389rem + 0.6vw, 1rem);
+    padding: 1rem 1.5rem;
+    font-size: clamp(1rem, 0.778rem + 1.1vw, 2rem);
     font-weight: 500;
     color: var(--dark);
-    background-color: var(--light);
+    background-color: var(--alert);
   }
 
   input:not([type="submit"])::placeholder {
@@ -140,11 +154,12 @@ input {
     align-self: center;
     display: block;
     width: fit-content;
-    font-size: clamp(0.75rem, 0.5rem + 0.8vw, 1.5rem);
+    margin-top: clamp(1rem, 0.833rem + 0.8vw, 1.5rem);
+    font-size: clamp(1rem, 0.778rem + 1.1vw, 2rem);
     font-weight: 700;
     color: #fff;
     background-color: var(--primary);
-    padding: clamp(0.5rem, 0.333rem + 0.6vw, 1rem);
+    padding: clamp(0.5rem, 0.389rem + 0.6vw, 1rem);
     border-radius: clamp(0.3rem, 0.233rem + 0.2vw, 0.5rem);
     cursor: pointer;
     transition: 0.2s ease;
