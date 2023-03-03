@@ -142,7 +142,7 @@ input {
     font-size: clamp(1rem, 0.778rem + 1.1vw, 2rem);
     font-weight: 500;
     color: var(--dark);
-    background-color: var(--alert);
+    background-color: var(--light);
   }
 
   input:not([type="submit"])::placeholder {
